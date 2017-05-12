@@ -98,7 +98,16 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener("DOMContentLoaded", function () {
-  var store = (0, _store2.default)();
+  var store = void 0;
+
+  if (window.currentUser) {
+    var preloadedState = { session: { currentUser: window.currentUser } };
+    store = (0, _store2.default)(preloadedState);
+    delete window.currentUser;
+  } else {
+    store = (0, _store2.default)();
+  }
+
   window.store = store;
   window.SessionAction = SessionAction;
 
