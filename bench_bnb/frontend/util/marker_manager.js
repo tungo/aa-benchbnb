@@ -5,9 +5,19 @@ export default class MarkerManager {
   }
 
   updateMarkers(benches) {
+    const objBenches = {};
+
     benches.forEach((bench) => {
+      objBenches[bench.id] = bench;
+
       if (!this.markers[bench.id]) {
         this.markers[bench.id] = this.createMarkerFormBench(bench);
+      }
+    });
+
+    Object.keys(this.markers).forEach((id) => {
+      if (!objBenches[id]) {
+        this.removeMarker(id);
       }
     });
   }
@@ -25,5 +35,10 @@ export default class MarkerManager {
 
     marker.setMap(this.map);
     return marker;
+  }
+
+  removeMarker(id) {
+    this.markers[id].setMap(null);
+    delete this.markers[id];
   }
 }
