@@ -7,16 +7,24 @@ class BenchForm extends React.Component {
     this.state = {
       description: '',
       seating: '',
-      lat: '',
-      lng: ''
+      lat: this.props.lat,
+      lng: this.props.lng
     };
+
+    this.update = this.update.bind(this);
   }
 
   update(e) {
     e.preventDefault();
 
-    const {name, value} = e.currentTarget;
+    const { name, value } = e.currentTarget;
     this.setState({[name]: value});
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+
+
   }
 
   render() {
@@ -50,6 +58,7 @@ class BenchForm extends React.Component {
               name="lat"
               value={this.state.lat}
               onChange={this.update}
+              disabled
             />
           </label>
 
@@ -60,8 +69,11 @@ class BenchForm extends React.Component {
               name="lng"
               value={this.state.lng}
               onChange={this.update}
+              disabled
             />
           </label>
+
+          <button onClick={this.handleClick}>Submit</button>
 
         </form>
       </div>
