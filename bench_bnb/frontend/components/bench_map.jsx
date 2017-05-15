@@ -14,18 +14,28 @@ class BenchMap extends React.Component {
     // wrap the mapDOMNode in a Google Map
     this.map = new google.maps.Map(this.mapNode, mapOptions);
 
-    let bounds = {
-      northEast: {},
-      southWest: {}
-    };
     this.map.addListener('idle', () => {
-      let b = this.map.getBounds();
-      bounds.northEast.lat = b.getNorthEast().lat();
-      bounds.northEast.lng = b.getNorthEast().lng();
-      bounds.southWest.lat = b.getSouthWest().lat();
-      bounds.southWest.lng = b.getSouthWest().lng();
+      let bounds = {
+        northEast: {},
+        southWest: {}
+      };
+      let boundsNE = this.map.getBounds().getNorthEast();
+      let boundsSW = this.map.getBounds().getSouthWest();
+
+      bounds.northEast.lat = boundsNE.lat();
+      bounds.northEast.lng = boundsNE.lng();
+      bounds.southWest.lat = boundsSW.lat();
+      bounds.southWest.lng = boundsSW.lng();
 
       this.props.changeBounds(bounds);
+    });
+
+    this.map.addListener('click', (e) => {
+      const coords = {
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng()
+      };
+      this._handleClick(coords);
     });
 
     this.MarkerManager = new MarkerManager(this.map);
@@ -34,6 +44,13 @@ class BenchMap extends React.Component {
 
   componentWillUpdate(nextProps) {
     this.MarkerManager.updateMarkers(nextProps.benches);
+  }
+
+  _handleClick(coords){
+    this.props.history.push({
+      pathname: "benches/new",
+      search: `lat=${coords.lat}&lng=${coords.lng}`
+    });
   }
 
   render() {
