@@ -24,7 +24,7 @@ class BenchMap extends React.Component {
       bounds.southWest.lat = b.getSouthWest().lat();
       bounds.southWest.lng = b.getSouthWest().lng();
 
-      this.props.updateBounds(bounds);
+      this.props.changeBounds(bounds);
     });
 
     this.MarkerManager = new MarkerManager(this.map);
