@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 import { UPDATE_BOUNDS } from '../actions/filter_actions';
 
-const FilterReducer = (state, action) => {
+const FilterReducer = (state = {}, action) => {
   Object.freeze(state);
 
   switch(action.type) {
