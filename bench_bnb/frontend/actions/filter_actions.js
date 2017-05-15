@@ -10,8 +10,6 @@ export const updateBounds = (bounds) => ({
 
 
 export const changeBounds = (bounds) => (dispatch, getState) => {
-  console.log(bounds);
   dispatch(updateBounds(bounds));
-  console.log(getState().filters);
   return fetchBenches(getState().filters)(dispatch);
 };
