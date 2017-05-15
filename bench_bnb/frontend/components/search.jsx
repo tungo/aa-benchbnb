@@ -8,7 +8,10 @@ class Search extends React.Component {
     return (
       <div>
         <BenchMap />
-        <BenchIndex />
+        <BenchIndex
+          benches={this.props.benches}
+          fetchBenches={this.props.fetchBenches}
+        />
       </div>
     );
   }
