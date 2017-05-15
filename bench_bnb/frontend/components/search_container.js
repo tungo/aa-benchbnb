@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import values from 'lodash/values';
 
 import { fetchBenches } from '../actions/bench_actions';
+import { selectAllBenches } from '../reducers/selector';
 import Search from './search';
 
 const mapStateToProps = (state) => ({
-  benches: values(state.benches)
+  benches: selectAllBenches(state.benches)
 });
 
 const mapDispatchToProps = (dispatch) => ({
