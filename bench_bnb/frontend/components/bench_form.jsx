@@ -6,7 +6,7 @@ class BenchForm extends React.Component {
 
     this.state = {
       description: '',
-      seating: '',
+      seating: 2,
       lat: this.props.lat,
       lng: this.props.lng
     };
