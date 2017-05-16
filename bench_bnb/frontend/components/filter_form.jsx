@@ -17,6 +17,8 @@ class FilterForm extends React.Component {
 
     const { name, value } = e.currentTarget;
     this.setState({[name]: value});
+
+    this.props.changeFilter(name, value);
   }
 
   render() {
@@ -26,7 +28,7 @@ class FilterForm extends React.Component {
           <label>
             Minimum Seating:
             <input
-              type="text"
+              type="number"
               name="minSeating"
               value={this.state.minSeating}
               onChange={this.update}
@@ -36,7 +38,7 @@ class FilterForm extends React.Component {
           <label>
             Maximum Seating:
             <input
-              type="text"
+              type="number"
               name="maxSeating"
               value={this.state.maxSeating}
               onChange={this.update}

@@ -2,25 +2,24 @@ import React from 'react';
 
 import BenchMap from './bench_map';
 import BenchIndex from './bench_index';
+import FilterForm from './filter_form';
 
 export default ({
   benches,
   minSeating,
   maxSeating,
   fetchBenches,
-  changeFilter,
-  updateFilter
+  changeFilter
 }) => (
   <div>
     <BenchMap
       benches={benches}
       changeFilter={changeFilter}
-      updateFilter={updateFilter}
     />
     <FilterForm
       minSeating={minSeating}
       maxSeating={maxSeating}
-      updateFilter={updateFilter}
+      changeFilter={changeFilter}
     />
     <BenchIndex
       benches={benches}

@@ -7,4 +7,9 @@ class Bench < ApplicationRecord
         .where("lng <= #{bounds[:northEast][:lng]}")
         .where("lng >= #{bounds[:southWest][:lng]}")
   end
+
+  def self.in_seatings(min_seating, max_seating)
+    self.where("seating >= #{min_seating}")
+        .where("seating <= #{max_seating}")
+  end
 end
