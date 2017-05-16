@@ -12,4 +12,4 @@ const mapDispatchToProps = (dispatch) => ({
   createBench: (bench) => dispatch(createBench(bench))
 });
 
-export default connect(mapStateToProps)(BenchForm);
+export default connect(mapStateToProps, mapDispatchToProps)(BenchForm);

@@ -12,6 +12,7 @@ class BenchForm extends React.Component {
     };
 
     this.update = this.update.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   update(e) {
@@ -24,7 +25,8 @@ class BenchForm extends React.Component {
   handleClick(e) {
     e.preventDefault();
 
-
+    this.props.createBench(this.state)
+      .then(() => this.props.history.push({pathname: "/"}));
   }
 
   render() {
