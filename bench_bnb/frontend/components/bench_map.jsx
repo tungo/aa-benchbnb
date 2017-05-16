@@ -27,7 +27,7 @@ class BenchMap extends React.Component {
       bounds.southWest.lat = boundsSW.lat();
       bounds.southWest.lng = boundsSW.lng();
 
-      this.props.changeBounds(bounds);
+      this.props.changeFilter('bounds', bounds);
     });
 
     this.map.addListener('click', (e) => {

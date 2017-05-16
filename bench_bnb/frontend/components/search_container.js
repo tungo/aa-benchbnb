@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { fetchBenches } from '../actions/bench_actions';
-import { changeBounds } from '../actions/filter_actions';
+import { changeFilter } from '../actions/filter_actions';
 import { selectAllBenches } from '../reducers/selector';
 import Search from './search';
 
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeBounds: (bounds) => dispatch(changeBounds(bounds))
+  changeFilter: (filter, value) => dispatch(changeFilter(filter, value))
 });
 
 export default connect(
